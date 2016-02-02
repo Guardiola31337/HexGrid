@@ -21,7 +21,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp">
 
-  <com.github.pguardiola.HexagonViewEastWest
+  <com.pguardiola.HexagonViewEastWest
       android:id="@+id/east_west"
       android:layout_width="150dp"
       android:layout_height="150dp"
