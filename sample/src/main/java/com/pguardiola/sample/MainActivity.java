@@ -30,61 +30,60 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int SPAN_COUNT = 2;
-    private RecyclerView foldersView;
-    private RecyclerView.Adapter foldersAdapter;
-    private GridLayoutManager layoutManager;
+  private static final int SPAN_COUNT = 2;
+  private RecyclerView foldersView;
+  private RecyclerView.Adapter foldersAdapter;
+  private GridLayoutManager layoutManager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-        foldersView = (RecyclerView) findViewById(R.id.folders);
+    foldersView = (RecyclerView) findViewById(R.id.folders);
 
-        foldersView.setHasFixedSize(true);
+    foldersView.setHasFixedSize(true);
 
-        int squareSideLengthInPixels = getResources().getDimensionPixelSize(R.dimen.square_side_length);
-        float radius = squareSideLengthInPixels / 2;
-        float adjacent = (float) (Math.sqrt(3) * radius / 2);
+    int squareSideLengthInPixels = getResources().getDimensionPixelSize(R.dimen.square_side_length);
+    float radius = squareSideLengthInPixels / 2;
+    float adjacent = (float) (Math.sqrt(3) * radius / 2);
 
-        int spacingInPixels = -(Math.round(radius - adjacent));
+    int spacingInPixels = -(Math.round(radius - adjacent));
 
-        foldersView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
+    foldersView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
-        layoutManager = new GridLayoutManager(this, SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override public int getSpanSize(int position) {
-                return position % 3 == 0 ? 2 : 1;
-            }
-        });
+    layoutManager = new GridLayoutManager(this, SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
+    layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+      @Override public int getSpanSize(int position) {
+        return position % 3 == 0 ? 2 : 1;
+      }
+    });
 
-        foldersView.setLayoutManager(layoutManager);
+    foldersView.setLayoutManager(layoutManager);
 
-        List<String> folders = new ArrayList<String>() {{
-            add("Foo");
-            add("test");
-            add("folDER");
-            add("Foo");
-            add("test");
-            add("folDER");
-            add("Foo");
-            add("test");
-            add("folDER");
-            add("Foo");
-            add("test");
-            add("folDER");
-            add("Foo");
-            add("test");
-            add("folDER");
-            add("Foo");
-            add("test");
-            add("folDER");
-            add("Foo");
-            add("test");
-            add("folDER");
-        }};
-        foldersAdapter = new HexAdapter(folders);
-        foldersView.setAdapter(foldersAdapter);
-    }
+    List<String> folders = new ArrayList<String>() { {
+      add("Foo");
+      add("test");
+      add("folDER");
+      add("Foo");
+      add("test");
+      add("folDER");
+      add("Foo");
+      add("test");
+      add("folDER");
+      add("Foo");
+      add("test");
+      add("folDER");
+      add("Foo");
+      add("test");
+      add("folDER");
+      add("Foo");
+      add("test");
+      add("folDER");
+      add("Foo");
+      add("test");
+      add("folDER");
+    } };
+    foldersAdapter = new HexAdapter(folders);
+    foldersView.setAdapter(foldersAdapter);
+  }
 }

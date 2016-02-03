@@ -29,8 +29,8 @@ public class Hexagon extends RelativeLayout {
   public Hexagon(Context context, AttributeSet attrs) {
     super(context, attrs);
 
-    LayoutInflater inflater = (LayoutInflater) context
-        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    LayoutInflater inflater =
+        (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     inflater.inflate(R.layout.hexagon, this, true);
 
     hexagonViewEastWest = (HexagonViewEastWest) findViewById(R.id.east_west);

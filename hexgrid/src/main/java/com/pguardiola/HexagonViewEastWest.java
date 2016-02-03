@@ -41,6 +41,7 @@ public class HexagonViewEastWest extends View {
     super(context, attrs);
     init();
   }
+
   public HexagonViewEastWest(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     init();
@@ -56,17 +57,15 @@ public class HexagonViewEastWest extends View {
     invalidate();
   }
 
-  @Override
-  public void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+  @Override public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     width = MeasureSpec.getSize(widthMeasureSpec);
-    height =  MeasureSpec.getSize(heightMeasureSpec);
+    height = MeasureSpec.getSize(heightMeasureSpec);
     radius = height / 2;
     calculatePath();
   }
 
-  @Override
-  public void onDraw(Canvas c){
+  @Override public void onDraw(Canvas c) {
     super.onDraw(c);
     c.clipPath(hexagonBorderPath, Region.Op.INTERSECT);
     c.drawColor(Color.WHITE);
