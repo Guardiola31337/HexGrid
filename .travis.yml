@@ -1,5 +1,12 @@
 language: android
 
+env:
+  matrix:
+    - ANDROID_TARGET=android-18 ANDROID_ABI=armeabi-v7a
+  global:
+    # wait up to 10 minutes for adb to connect to emulator
+    - ADB_INSTALL_TIMEOUT=10
+
 android:
   components:
     - tools
@@ -8,6 +15,17 @@ android:
     - extra-android-support
     - extra-google-m2repository
     - extra-android-m2repository
+    # Emulator for the tests
+    - sys-img-armeabi-v7a-android-18
 
 script:
-  ./gradlew checkstyle build connectedCheck
+before_script:
+  - echo no | android create avd --force --name test --target $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+
+script:
+  - ./gradlew check -PdisablePreDex --continue --stacktrace
+  - android-wait-for-emulator
+  - adb devices
+  - adb shell input keyevent 82 &
+  - ./gradlew connectedAndroidTest -PdisablePreDex --continue --stacktrace
