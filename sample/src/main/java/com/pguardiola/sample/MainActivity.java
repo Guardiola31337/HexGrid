@@ -22,6 +22,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import android.view.View;
+import android.widget.Toast;
+import com.pguardiola.CustomItemClickListener;
 import com.pguardiola.HexAdapter;
 import com.pguardiola.SpacesItemDecoration;
 
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     foldersView.setLayoutManager(layoutManager);
 
-    List<String> folders = new ArrayList<String>() { {
+    final List<String> folders = new ArrayList<String>() { {
       add("Foo");
       add("test");
       add("folDER");
@@ -83,7 +86,12 @@ public class MainActivity extends AppCompatActivity {
       add("test");
       add("folDER");
     } };
-    foldersAdapter = new HexAdapter(folders);
+    foldersAdapter = new HexAdapter(folders, new CustomItemClickListener() {
+      @Override
+      public void onItemClick(View v, int position) {
+        Toast.makeText(getApplicationContext(), folders.get(position), Toast.LENGTH_SHORT).show();
+      }
+    });
     foldersView.setAdapter(foldersAdapter);
   }
 }

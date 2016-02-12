@@ -29,15 +29,29 @@ public class HexAdapter extends RecyclerView.Adapter<HexAdapter.ViewHolder> {
 
   private List<String> labels;
   private Context context;
+  private CustomItemClickListener listener;
 
   public HexAdapter(List<String> theLabels) {
-    labels = theLabels;
+    this(theLabels, null);
+  }
+
+  public HexAdapter(List<String> theLabels, CustomItemClickListener listener) {
+    this.labels = theLabels;
+    this.listener = listener;
   }
 
   @Override public HexAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    context = parent.getContext();
+    this.context = parent.getContext();
     Hexagon hexagon = new Hexagon(context);
-    ViewHolder holder = new ViewHolder(hexagon);
+    final ViewHolder holder = new ViewHolder(hexagon);
+    hexagon.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (listener != null) {
+          listener.onItemClick(v, holder.getAdapterPosition());
+        }
+      }
+    });
     return holder;
   }
 
