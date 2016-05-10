@@ -35,6 +35,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile libAppCompat
+    compile libSupportRecyclerView
     compile project(':hexgrid')
 
     // Testing-only dependencies
