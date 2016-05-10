@@ -32,5 +32,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
-      tools:text="WhatsApp Images"/>
+      android:textSize="28sp"
+      android:textStyle="bold"
+      tools:text="8"/>
 </RelativeLayout>
