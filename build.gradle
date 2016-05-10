@@ -22,8 +22,8 @@ allprojects {
         androidMinSdkVersion = 16
         androidTargetSdkVersion = 23
         androidApplicationId = 'com.pguardiola'
-        androidVersionCode = 4
-        androidVersionName = '0.0.4'
+        androidVersionCode = 5
+        androidVersionName = '0.0.5'
 
         // Libraries
         libAppCompat = 'com.android.support:appcompat-v7:23.1.1'
