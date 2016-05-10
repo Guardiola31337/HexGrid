@@ -18,28 +18,28 @@ Usage
 As _HexGrid_ is developed on top of `RecyclerView` in order to obtain a Hexagonal Grid, you only have to implement a normal _RecyclerView_ using the custom elements provided (`SpacesItemDecoration`, `HexAdapter` and `CustomItemClickListener`).
 
 1. You have to create a layout file which contains the RecyclerView.
-```xml
-<android.support.v7.widget.RecyclerView
+  ```xml
+  <android.support.v7.widget.RecyclerView
         android:id="@+id/tiles"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/sea"/>
-```
+  ```
 2. Calculate `spacingInPixels` (separation between hexagons in a grid), create a new `SpacesItemDecoration` with the spacing previously calculated and add it to the view.
-```java
+  ```java
 tilesView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
-```
+  ```
 3. Instantiate a `LayoutManager`, establish the number of spans occupied by each item in the adapter (e.g. 1-2-1-...-1-2-1) and set the manager to the view.
-```java
+  ```java
 layoutManager = new GridLayoutManager(this, SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
 layoutManager.setSpanSizeLookup(spanSeries);
 tilesView.setLayoutManager(layoutManager);
-```
+  ```
 4. Instantiate a new `HexAdapter` with a `CustomItemClickListener` and set the adapter to the view.
-```java
+  ```java
 tilesAdapter = new HexAdapter(tiles, onClickListener);
 tilesView.setAdapter(tilesAdapter);
-```
+  ```
 
 Add it to your project
 ----------------------
