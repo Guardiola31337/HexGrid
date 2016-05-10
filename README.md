@@ -29,25 +29,25 @@ As _HexGrid_ is developed on top of `RecyclerView` in order to obtain a Hexagona
 
 2. Calculate `spacingInPixels` (separation between hexagons in a grid), create a new `SpacesItemDecoration` with the spacing previously calculated and add it to the view.
 
-        ```java
-        tilesView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
-        ```
+    ```java
+    tilesView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
+    ```
 
 3. Instantiate a `LayoutManager`, establish the number of spans occupied by each item in the adapter (e.g. 1-2-1-...-1-2-1) and set the manager to the view.
 
-        ```java
-        layoutManager = new GridLayoutManager(this, SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
-        layoutManager.setSpanSizeLookup(spanSeries);
-        tilesView.setLayoutManager(layoutManager);
-        ```
+    ```java
+    layoutManager = new GridLayoutManager(this, SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
+    layoutManager.setSpanSizeLookup(spanSeries);
+    tilesView.setLayoutManager(layoutManager);
+    ```
 
 4. Instantiate a new `HexAdapter` with a `CustomItemClickListener` and set the adapter to the view.
 
-        ```java
-        tilesAdapter = new HexAdapter(tiles, onClickListener);
-        tilesView.setAdapter(tilesAdapter);
-        ```
-    
+    ```java
+    tilesAdapter = new HexAdapter(tiles, onClickListener);
+    tilesView.setAdapter(tilesAdapter);
+    ```
+
 Add it to your project
 ----------------------
 
